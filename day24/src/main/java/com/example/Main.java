@@ -104,7 +104,11 @@ public class Main extends Application {
         VBox layout = new VBox(20);
         layout.setPadding(new Insets(20));
         Label mainLabel = new Label("Mirë se vini në aplikacionin tonë!");
+        Label paragrafi = new Label("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
+        Label paragrafiA = new Label("Adjust the CSS styles or RichTextFX settings to achieve the desired paragraph formatting.");
         layout.getChildren().add(mainLabel);
+        layout.getChildren().add(paragrafi);
+        layout.getChildren().add(paragrafiA);
         return new Scene(layout, 600, 400);
     }
 }
