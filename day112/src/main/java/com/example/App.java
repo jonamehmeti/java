@@ -8,23 +8,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class libis extends Application {
+public class App extends Application {
 
     Stage window;
     TableView<Product> table;
-
 
     public static void main(String[] args) {
         launch(args);
@@ -47,7 +41,7 @@ public class libis extends Application {
         // Left Menu
         VBox leftMenu = new VBox(10);
         leftMenu.setPadding(new Insets(15, 12, 15, 12));
-        leftMenu.setStyle("-fx-background-color: #20639B;");
+        leftMenu.setStyle("-fx-background-color: #3e5cba;");
         Button button4 = new Button("Sales");
         Button button5 = new Button("Marketing");
         Button button6 = new Button("Costs");
@@ -79,16 +73,6 @@ public class libis extends Application {
         CheckBox downloadableCheckBox = new CheckBox("Downloadable Product");
         grid.add(downloadableCheckBox, 1, 6);
 
-        //create the listview
-		ListView<String> attributes = new ListView<>();
-		attributes.getItems().addAll(
-			    "Color",
-				"Size"
-			);
-		attributes.setPrefSize(150, 200);
-		attributes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		grid.add(attributes, 1, 7); 
-
         // Error Labels (Initially Hidden)
         Label nameError = createErrorLabel(grid, 2, 0);
         Label categoryError = createErrorLabel(grid, 2, 1);
@@ -97,7 +81,8 @@ public class libis extends Application {
 
         // Save Button to Trigger Validation
         Button saveButton = new Button("Save");
-        grid.add(saveButton, 1, 9);
+        saveButton.setStyle("-fx-background-color: blue; -fx-text-fill: white;"); 
+        grid.add(saveButton, 1, 7);
 
         saveButton.setOnAction(e -> {
             validateInputs(productNameInput, nameError, "[A-Za-z\\s]+");
@@ -105,38 +90,27 @@ public class libis extends Application {
             validateInputs(productPriceInput, priceError, "\\d{0,7}(\\.\\d{0,4})?");
             validateInputs(productStatusInput, statusError, "[A-Za-z\\s]+");
         });
-
-        table = new TableView();
-        TableColumn<Product, String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(100);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-        TableColumn<Product, String> categoryColumn = new TableColumn<>("Category");
-        categoryColumn.setMinWidth(100);
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         
-        TableColumn<Product, String> priceColumn = new TableColumn<>("Price");
-        priceColumn.setMinWidth(100);
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        table= new TableView();
+        TableColumn<Product, String> nameColumn = new TableColumn<> ("Name");
+        nameColumn.setMinWidth(100);
+        nameColumn.setCellValueFactory(new PropertyValueFactory("name"));
 
-        TableColumn<Product, String> statusColumn = new TableColumn<>("Status");
-        statusColumn.setMinWidth(100);
-        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        table= new TableView();
+        TableColumn<Product, String> nameColumn = new TableColumn<> ("Category");
+        nameColumn.setMinWidth(100);
+        nameColumn.setCellValueFactory(new PropertyValueFactory("category"));
 
-        TableColumn<Product, String> extraTypeColumn = new TableColumn<>("ExtraType");
-        extraTypeColumn.setMinWidth(100);
-        extraTypeColumn.setCellValueFactory(new PropertyValueFactory<>("ExtraType"));
-
-        table.getColumns().addAll(nameColumn, categoryColumn, statusColumn, extraTypeColumn);
-
-        VBox container = new VBox();
-        container.getChildren().addAll(grid, table);
+        table= new TableView();
+        TableColumn<Product, String> nameColumn = new TableColumn<> ("Price");
+        nameColumn.setMinWidth(100);
+        nameColumn.setCellValueFactory(new PropertyValueFactory("price"));
 
         // Layout with BorderPane
         BorderPane layout = new BorderPane();
         layout.setTop(topMenu);
         layout.setLeft(leftMenu);
-        layout.setCenter(container);
+        layout.setCenter(grid);
 
         Scene scene = new Scene(layout, 900, 700);
         window.setScene(scene);

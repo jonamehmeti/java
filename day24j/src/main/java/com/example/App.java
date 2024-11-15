@@ -15,7 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class App extends Application {
 
     Stage window;
 
@@ -40,7 +40,7 @@ public class Main extends Application {
         // Left Menu
         VBox leftMenu = new VBox(10);
         leftMenu.setPadding(new Insets(15, 12, 15, 12));
-        leftMenu.setStyle("-fx-background-color: #3e5cba;");
+        leftMenu.setStyle("-fx-background-color: #20639B;");
         Button button4 = new Button("Sales");
         Button button5 = new Button("Marketing");
         Button button6 = new Button("Costs");
@@ -80,7 +80,6 @@ public class Main extends Application {
 
         // Save Button to Trigger Validation
         Button saveButton = new Button("Save");
-        saveButton.setStyle("-fx-background-color: blue; -fx-text-fill: white;"); 
         grid.add(saveButton, 1, 7);
 
         saveButton.setOnAction(e -> {
