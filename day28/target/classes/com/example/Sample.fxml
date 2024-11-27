@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UFT-8"?>
+
+<BorderPane xmls:fx="http://javafx.com/fxml" fx:controller="com.example.SampleController">
+<top>
+    <Label text="Welcome"> 
+</top>
+<center>
+ <VBox alignment= "CENTER" spacing= "10">
+ <Label fx:id="label1" text="I love coding">
+ <Button fx:id="Button1" text="Click here" onAction="#handleButtonClick">
+</VBox>
+</BorderPane>
+</center>
